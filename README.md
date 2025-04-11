@@ -57,15 +57,17 @@ Laravel Events (ProductUpdated)	Broadcasts changes to Pusher
 JavaScript (Pusher-JS)	Listens for updates and refreshes UI
 
 # Sequence Diagram
+```mermaid
+sequenceDiagram
+    participant Laravel
+    participant Pusher
+    participant Frontend
 
-Laravel (Backend)          Pusher           Frontend (JS)
-   |                         |                    |
-   |-- Fetch Products ------>|                    |
-   |                         |                    |
-   |-- Broadcast Event ----->|                    |
-   |                         |-- Push Update ---->|
-   |                         |                    |-- Refresh UI
-
+    Laravel->>Pusher: Fetch Products
+    Laravel->>Pusher: Broadcast Event
+    Pusher->>Frontend: Push Update
+    Frontend->>Frontend: Refresh UI
+```
 # Final Notes
 ✅ Tested & Working – Verified real-time updates with multiple clients.
 📦 Ready for Deployment – Includes all dependencies (composer.json, package.json).
